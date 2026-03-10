@@ -1,4 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+from schemas import PedidoSchema
+from models import Pedido
+
+from dependencies import pegar_sessao
 
 order_router = APIRouter(prefix="/pedidos", tags=["pedidos"])
 
@@ -9,6 +14,9 @@ async def pedidos():
     """
     return {"mensagem": "Você acessou a rota de pedidos"}
 
-@order_router.post("/")
-async def criar_pedido():
-    return {"mensagem": "Pedido criado com sucesso"}
+@order_router.post("/pedido")
+async def criar_pedido(pedido_schema: PedidoSchema, session: Session = Depends(pegar_sessao)):
+    novo_pedido = Pedido(usuario=PedidoSchema.id_usuario)
+    session.add(novo_pedido)
+    session.commit()
+    return {"mensagem": "Pedido criado com sucesso.ID do pedido: {novo_pedido.id}"}

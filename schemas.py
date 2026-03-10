@@ -12,3 +12,10 @@ class UsuarioSchema(BaseModel):
 
     class Config:
        from_attributes = True #conecta ao modelo do banco de dados, ou seja, a classe Usuario do models.py
+
+
+class PedidoSchema(BaseModel):
+    id_usuario: int
+
+    class Config:
+        from_attributes = True
