@@ -5,8 +5,8 @@ from sqlalchemy import pool
 
 from alembic import context
 
-import sys
-import os
+import sys #para importar algo de dentro de outra pasta
+import os #para importar algo de dentro de outra pasta
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..' )))
 

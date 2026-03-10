@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from passlib.context import CryptContext
-from dotenv import load_dotenv
+from dotenv import load_dotenv  #para pegar as variáveis de ambiente do arquivo .env
 import os
 
 load_dotenv()
@@ -9,6 +9,7 @@ load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 app = FastAPI()
+
 bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 from auth_routes import auth_router
