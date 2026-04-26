@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from utils import SECRET_KEY
+from utils import SECRET_KEY, oauth2_schema
 
 app = FastAPI()
 
